@@ -27,9 +27,9 @@ def main():
                                 Enter the path to save; \
                                 e.g., -o ./data/COACH420_features.pkl"  
                 )  
-    parser.add_argument("--training", "-t", required = True, type = bool,
-                        help = "training is True: Binding site information is added when generating data for training; \
-                                training is False: Binding site information is not added when generating data for testing; \
+    parser.add_argument("--labels", "-l", required = True, type = bool,
+                        help = "labels is True: Binding site information is added when generating data for training; \
+                                labels is False: Binding site information is not added when generating data for test; \
                                 e.g., -t True" 
                 )
     
