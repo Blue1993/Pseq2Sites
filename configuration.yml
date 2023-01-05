@@ -1,0 +1,23 @@
+paths:
+    prot_feats: "./data/training_features1.pkl"
+    save_path: "/home/drugdesign/work/BA_CM/Pseq2Sites/results/CV"
+    model_path: "/home/drugdesign/work/BA_CM/Pseq2Sites/results/model"
+    result_path: "/home/drugdesign/work/BA_CM/Pseq2Sites/results/prediction.tsv"
+    
+train:
+    epochs: 50
+    batch_size: 8
+    dropout: 0.3
+    
+architectures:
+    hidden_size: 256
+    prots_input_dim: 1024
+    num_layer: 3
+    hidden_act: gelu
+    hidden_size: 256
+    intermediate_size: 512
+    num_attention_heads: 8
+    
+prots:
+    max_lengths: 1500
+    max_chains: 13
