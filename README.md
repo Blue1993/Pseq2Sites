@@ -56,6 +56,8 @@ protein2  pred_bs2
 protein3  pred_bs3
 ```
 
+The code for performance evaluation will be uploaded later.
+
 ## Train 
 Using training data, train Pseq2Sites with 5-fold CV.
 
