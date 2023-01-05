@@ -17,21 +17,39 @@ def main():
     parser = argparse.ArgumentParser(
             description = "Pseq2Sites predicts binding site based on protein sequence information"
     )
+    
     parser.add_argument("--config", "-c", required = True, type = input_check, 
                     help = "The file contains information on the protein sequences to predict binding sites. \
                     (refer to the examples.inp file for a more detailed file format)")
+
+    parser.add_argument("--labels", "-l", required = True, type = bool,
+                        help = "labels is True: Binding site information is use for evaluation performance; \
+                                labels is False: When protein' binding site information is unknwon; \
+                                e.g., -t True" 
+                )
+
     args = parser.parse_args()
     
     config = load_cfg(args.config)
     
     print("1. Load data ...")
     """ Load protein info """
-    with open(config["paths"]["prot_feats"], "rb") as f:
-        IDs, sequences, binding_sites, protein_feats = pickle.load(f)    
+    if args.labels:
+        with open(config["paths"]["prot_feats"], "rb") as f:
+            IDs, sequences, binding_sites, protein_feats = pickle.load(f)    
+      
+        print("2. Make dataset ...")
+        dataset = PocketDataset(IDs, protein_feats, sequences, binding_sites)
+        loader = Dataloader(dataset, batch_size = config["train"]["batch_size"], shuffle = False)
     
-    print("2. Make dataset ...")
-    dataset = PocketDataset(IDs, protein_feats, sequences, binding_sites)
-    loader = Dataloader(dataset, batch_size = config["train"]["batch_size"], shuffle = False)
+    else:
+    
+        with open(config["paths"]["prot_feats"], "rb") as f:
+            IDs, sequences, protein_feats = pickle.load(f)    
+      
+        print("2. Make dataset ...")
+        dataset = PocketDataset(IDs, protein_feats, sequences)
+        loader = Dataloader(dataset, batch_size = config["train"]["batch_size"], shuffle = False)    
     
     print("3. Binding sites prediction ...")
     trainiter = Pseq2SitesTrainIter(config)
