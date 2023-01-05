@@ -18,14 +18,14 @@ def main():
     parser.add_argument("--input", "-i", required = True, type = str,
                         help ="The file contains information such as protein ids and sequences; \
                                Enter the path of preprocessing.py output; \
-                               e.g., -i ./data/COACH420_data.csv"
+                               e.g., -i ./datasets/COACH420_data.tsv"
                 )
     parser.add_argument("--output", "-o", required = True, type = str,
                         help = "The file contains infomration for training and test; \
                                 It is saved in pickle file format and has the following order: \
                                 IDs, chains, seqs, binding sites, features; \
                                 Enter the path to save; \
-                                e.g., -o ./data/COACH420_features.pkl"  
+                                e.g., -o ./datasets/COACH420_features.pkl"  
                 )  
     parser.add_argument("--labels", "-l", required = True, type = bool,
                         help = "labels is True: Binding site information is added when generating data for training; \
