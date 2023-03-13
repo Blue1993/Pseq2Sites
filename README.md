@@ -8,13 +8,13 @@ The model was trained with PDBbind and sc-PDB datasets, and tested with COACH420
 ## Requirements
 
 
-python 3.7 \
-Pytorch 1.7.1 \
+python == 3.7 \
+Pytorch == 1.7.1 \
 [ProtTrans](https://github.com/agemagician/ProtTrans) \
-Biopython 1.79 \
-RDKit 2021.03.01 \
-Openbabel 2.4.1 \
-Chimera 1.16 
+Biopython == 1.79 \
+RDKit == 2021.03.01 \
+Openbabel == 2.4.1 \
+Chimera == 1.16 
 
 ## Prepare features
 
