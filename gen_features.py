@@ -65,7 +65,7 @@ def main():
     
     batch_seq_list, prots_feat_list = list(), list()
     
-    for seq in seqs[16000:]:
+    for seq in seqs:
         # split to chain seqs
         seq_list = seq.split(",")
         tmp_seq_embeddings = list()
