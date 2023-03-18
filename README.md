@@ -56,6 +56,21 @@ protein2  pred_bs2
 protein3  pred_bs3
 ```
 
+when using the label option.
+
+```
+python test.py -c configuraion.yml -l True
+```
+
+The result of `test.py` consist of the following format:
+
+```
+PDB BS  Pred_BS
+protein1  bs1  pred_bs1
+protein2  bs2  pred_bs2
+protein3  bs3  pred_bs3
+```
+
 ## Train 
 Using training data, train Pseq2Sites with 5-fold CV.
 
