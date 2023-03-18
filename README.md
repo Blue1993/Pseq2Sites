@@ -56,8 +56,6 @@ protein2  pred_bs2
 protein3  pred_bs3
 ```
 
-The code for performance evaluation will be uploaded later.
-
 ## Train 
 Using training data, train Pseq2Sites with 5-fold CV.
 
@@ -66,3 +64,6 @@ python train.py -c configuration.yml
 ```
 
 The trained models are saved in ./results/CV dir.
+
+## Evaluation
+For evaluation of binding site prediction results, refer to 'Binding site prediction example.ipynb'.
