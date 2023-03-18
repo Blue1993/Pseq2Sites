@@ -1,0 +1,23 @@
+paths:
+    prot_feats: "./datasets/COACH420_features.pkl"
+    save_path: "./results/CV/"
+    model_path: ".results/model/"
+    result_path: "./results/prediction.tsv"
+    
+train:
+    epochs: 50
+    batch_size: 8
+    dropout: 0.3
+    
+architectures:
+    hidden_size: 256
+    prots_input_dim: 1024
+    num_layer: 3
+    hidden_act: gelu
+    hidden_size: 256
+    intermediate_size: 512
+    num_attention_heads: 8
+    
+prots:
+    max_lengths: 1500
+    max_chains: 13
