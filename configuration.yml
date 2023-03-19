@@ -1,7 +1,7 @@
 paths:
     prot_feats: "./datasets/COACH420_features.pkl"
     save_path: "./results/CV/"
-    model_path: ".results/model/"
+    model_path: "./results/model/"
     result_path: "./results/prediction.tsv"
     
 train:
