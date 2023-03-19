@@ -82,3 +82,9 @@ The trained models are saved in ./results/CV dir.
 
 ## Evaluation
 For evaluation of binding site prediction results, refer to 'Binding site prediction example.ipynb'.
+
+To run the 'ipynb' file, decompress the compressed file with the command below.
+
+```
+cat COACH420_features.tar.gz* | tar xvfpz -
+```
