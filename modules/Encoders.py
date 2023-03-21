@@ -151,17 +151,42 @@ class PocketConvLayer(nn.Module):
         
         self.config = config
 
-        self.first_layers = nn.ModuleList()
-
-        self.first_layers.append(PocketEncoderLayer(self.config, dim_in = dim_in, dim_out = dim_out, 
-            kernel_size = 3, padding = padding, dilation = 1, stride = stride))
-            
-    def forward(self, embeddings = None, prots = None, attention_mask = None):
-        first_feats = prots.transpose(1,2)
+        dim_in_tuple = (1024, self.config["architectures"]["hidden_size"], self.config["architectures"]["hidden_size"], 
+                            self.config["architectures"]["hidden_size"], self.config["architectures"]["hidden_size"])
+        dim_out_tuple = (self.config["architectures"]["hidden_size"], self.config["architectures"]["hidden_size"], 
+                            self.config["architectures"]["hidden_size"], self.config["architectures"]["hidden_size"], 
+                                self.config["architectures"]["hidden_size"])
+       
+        dilation_tuple = (1, 2, 3)
         
-        for layer_module in self.first_layers:
-            first_feats = layer_module(first_feats)
+        self.first_ = nn.ModuleList()
+        self.second_ = nn.ModuleList()
+        self.third_ = nn.ModuleList()
 
-        feats = first_feats
+        for idx, dilation_rate in enumerate(dilation_tuple):
+            self.first_.append(ConvLayer(self.config, dim_in = dim_in_tuple[idx], dim_out = dim_out_tuple[idx], 
+                kernel_size = 3, padding = dilation_rate, dilation = dilation_rate))
+
+        for idx, dilation_rate in enumerate(dilation_tuple):
+            self.second_.append(ConvLayer(self.config, dim_in = dim_in_tuple[idx], dim_out = dim_out_tuple[idx], 
+                kernel_size = 5, padding = 2 * dilation_rate, dilation = dilation_rate))
+
+        for idx, dilation_rate in enumerate(dilation_tuple):
+            self.third_.append(ConvLayer(self.config, dim_in = dim_in_tuple[idx], dim_out = dim_out_tuple[idx], 
+                kernel_size = 7, padding = 3 * dilation_rate , dilation = dilation_rate)) 
+
+    def forward(self, query_embeddings, aa_embeddings, attention_mask):    
+        first_aa_embeddings, second_aa_embeddings, third_aa_embeddings = aa_embeddings.transpose(1,2), aa_embeddings.transpose(1,2), aa_embeddings.transpose(1,2)
+
+        for layer_module in self.first_:
+            first_aa_embeddings = layer_module(first_aa_embeddings)
+
+        for layer_module in self.second_:
+            second_aa_embeddings = layer_module(second_aa_embeddings)
+
+        for layer_module in self.third_:
+            third_aa_embeddings = layer_module(third_aa_embeddings) 
+
+        aa_embeddings = first_aa_embeddings + second_aa_embeddings + third_aa_embeddings
         
-        return feats.transpose(1,2), None
+        return aa_embeddings.transpose(1, 2)
