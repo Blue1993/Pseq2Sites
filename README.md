@@ -31,6 +31,7 @@ PDBbind: (http://www.pdbbind.org.cn/) \
 scPDB: (http://bioinfo-pharma.u-strasbg.fr/scPDB/) \
 COACH420, HOLO4K: (https://github.com/rdk/p2rank-datasets) \
 
+After downloading the dataset, change the path in the ipynb file to the downloaded dataset dir.
 
 ## Prepare features
 
@@ -43,7 +44,7 @@ Each chain sequence is separated by ',' delimiter.
 
 If predict the binding site of single chain, separate each chain.
 
-For more details input file format, see *_data.csv file in datasets dir.
+For more details input file format, see *_data.csv file in datasets/examples dir.
 
 ### 2. Get amino acid-level embeddings
 ProTrans is used to extract amino acid-level embeddings from protein sequences.
@@ -98,8 +99,3 @@ The trained models are saved in ./results/CV dir.
 ## Evaluation
 For evaluation of binding site prediction results, refer to 'Binding site prediction example.ipynb'.
 
-To run the 'ipynb' file, decompress the compressed file with the command below.
-
-```
-cat COACH420_features.tar.gz* | tar xvfpz -
-```
