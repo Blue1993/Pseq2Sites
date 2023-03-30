@@ -119,7 +119,7 @@ def get_results(binding_sites, pred_binding_sites, sequences):
         seq_len = len([i for i in seq if i != ","])
         index = [str(i) for i in range(seq_len)]
         
-        positive_label = set(bs.split(","))
+        positive_label = set(get_bs(bs))
         negative_label = set(index) - set(positive_label)
         positive_pred = set(bps.split(","))
         negative_pred = set(index) - set(positive_pred)
@@ -144,3 +144,8 @@ def get_results(binding_sites, pred_binding_sites, sequences):
     
     return np.round(precision,2), np.round(recall,2), np.round(specificity, 2), np.round(ACC, 2), np.round(G_mean, 2), np.round(F1_score, 2), np.round(F2_score, 2)
 
+def get_bs(binding_sites):
+    results = list()
+    for bs in binding_sites.split("|"):
+        results.extend(bs.split(","))
+    return results
