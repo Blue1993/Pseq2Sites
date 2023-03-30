@@ -42,7 +42,7 @@ Pseq2Sites use protein sequence, so prepare protein sequence data to predict bin
 Pseq2Sites predicts binding site for multi-chain proteins. \
 Each chain sequence is separated by ',' delimiter.
 
-If predict the binding site of single chain, separate each chain.
+If predicting the binding site of a single chain on a multi-chain protein, separate each chain and write the chain info in each row.
 
 For more details input file format, see *_data.csv file in datasets/examples dir.
 
@@ -53,8 +53,8 @@ ProTrans is used to extract amino acid-level embeddings from protein sequences.
 python gen_features.py -i ./datasets/COACH420_data.tsv -o ./datasets/COACH420_features.pkl -l True
 ```
 
-When `-l` option is False, ignored binding site information (for test). \
-For training, set option is True.
+When `-l` option is `False`, ignored binding site information (for test). \
+For training, set option is `True`.
 
 ## Predict
 To predict the binding site for prepared protein, use the following code.
