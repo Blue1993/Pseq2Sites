@@ -7,7 +7,6 @@ The model was trained with PDBbind and sc-PDB datasets, and tested with COACH420
 
 ## Requirements
 
-
 python==3.7 \
 Pytorch==1.7.1 \
 Biopython==1.79 \
@@ -16,7 +15,11 @@ Openbabel==2.4.1 \
 Chimera==1.16 \
 [ProtTrans](https://github.com/agemagician/ProtTrans)
 
-## Prepare features
+
+# Extract protein sequences and binding sites from 3D structures
+
+
+# Prepare features
 
 
 ### 1. Get sequence and binding site information
