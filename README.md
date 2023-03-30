@@ -16,15 +16,27 @@ Chimera==1.16 \
 [ProtTrans](https://github.com/agemagician/ProtTrans)
 
 
-# Extract protein sequences and binding sites from 3D structures
+## Extract protein sequences and binding sites from 3D structures
+For Pseq2Sites training, protein sequence and binding site information must be prepared. \
+Refer to the following code for extracting the protein sequence and binding site from the protein 3D structure. \
+
+'Preprocessing for PDBbind.ipynb'
+'Preprocessing for scPDB.ipynb'
+'Preprocessing for COACH420.ipynb'
+'Preprocessing for HOLO4K.ipynb'
+
+The files for all complexes of each dataset can be downloaded from the following link. \
+
+PDBbind: (http://www.pdbbind.org.cn/) \
+scPDB: (http://bioinfo-pharma.u-strasbg.fr/scPDB/) \
+COACH420, HOLO4K: (https://github.com/rdk/p2rank-datasets) \
 
 
-# Prepare features
+## Prepare features
 
 
 ### 1. Get sequence and binding site information
 Pseq2Sites use protein sequence, so prepare protein sequence data to predict binding site. \
-The code to extract protein sequence from 3D strcuture will be upload later.
 
 Pseq2Sites predicts binding site for multi-chain proteins. \
 Each chain sequence is separated by ',' delimiter.
